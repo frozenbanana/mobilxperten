@@ -1,0 +1,116 @@
+{
+  "tables": [
+    {
+      "manufacturer": "Apple",
+      "model": "iPad Pro",
+      "reparations": {
+        "screen_replacement": 2495,
+        "battery_replacement": 2595,
+        "homebutton_replacement": 2295,
+        "backside_replacement": 2795
+      }
+    },
+    {
+      "manufacturer": "Apple",
+      "model": "iPad Air",
+      "reparations": {
+        "screen_replacement": 995,
+        "battery_replacement": 995,
+        "homebutton_replacement": 995,
+        "backside_replacement": 995
+      }
+    },
+    {
+      "manufacturer": "Apple",
+      "model": "iPad Air 2",
+      "reparations": {
+        "screen_replacement": 2595,
+        "battery_replacement": 3795,
+        "homebutton_replacement": 3295,
+        "backside_replacement": 4795
+      }
+    }
+  ],
+  "phones": [
+    {
+      "manufacturer": "Apple",
+      "model": "iPhone 5",
+      "reparations": {
+        "screen_replacement": 495,
+        "battery_replacement": 595,
+        "homebutton_replacement": 295,
+        "backside_replacement": 795
+      }
+    },
+    {
+      "manufacturer": "Apple",
+      "model": "iPhone 5s",
+      "reparations": {
+        "screen_replacement": 595,
+        "battery_replacement": 695,
+        "homebutton_replacement": 495,
+        "backside_replacement": 895
+      }
+    },
+    {
+      "manufacturer": "Apple",
+      "model": "iPhone 6",
+      "reparations": {
+        "screen_replacement": 595,
+        "battery_replacement": 795,
+        "homebutton_replacement": 295,
+        "backside_replacement": 795
+      }
+    },
+    {
+      "manufacturer": "Apple",
+      "model": "iPhone 6s",
+      "reparations": {
+        "screen_replacement": 1495,
+        "battery_replacement": 1595,
+        "homebutton_replacement": 495,
+        "backside_replacement": 895
+      }
+    },
+    {
+      "manufacturer": "Samsung",
+      "model": "S6",
+      "reparations": {
+        "screen_replacement": 495,
+        "battery_replacement": 595,
+        "homebutton_replacement": 295,
+        "backside_replacement": 795
+      }
+    },
+    {
+      "manufacturer": "Samsung",
+      "model": "S7",
+      "reparations": {
+        "screen_replacement": 595,
+        "battery_replacement": 695,
+        "homebutton_replacement": 495,
+        "backside_replacement": 895
+      }
+    },
+    {
+      "manufacturer": "Samsung",
+      "model": "S7 Edge",
+      "reparations": {
+        "screen_replacement": 595,
+        "battery_replacement": 795,
+        "homebutton_replacement": 295,
+        "backside_replacement": 795
+      }
+    },
+    {
+      "manufacturer": "Samsung",
+      "model": "S8",
+      "reparations": {
+        "screen_replacement": 1495,
+        "battery_replacement": 1595,
+        "homebutton_replacement": 495,
+        "backside_replacement": 895
+      }
+    }
+  ]
+}
