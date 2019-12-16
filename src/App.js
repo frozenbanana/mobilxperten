@@ -10,7 +10,9 @@ class App extends Component {
             {id: 1, value: 1},
             {id: 2, value: 0},
             {id: 3, value: 3}
-        ]
+        ],
+        isLoaded: false,
+        devices: []
     };
 
     constructor() {
@@ -20,7 +22,16 @@ class App extends Component {
 
     componentDidMount() {
         // Place to do server calls. E.g Get product information.
-        console.log('ComponentDidMount called')
+        fetch('https://my-json-server.typicode.com/frozenbanana/mobilxperten/db')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({
+                    isLoaded: true,
+                    devices: json
+                });
+                console.log('Fetch done.');
+                console.log('ComponentDidMount called', this.state)
+            });
     }
 
     handleDelete = (counterId) => {
@@ -46,21 +57,35 @@ class App extends Component {
     };
 
     render() {
-        console.log('render called')
+        const {isLoaded, devices } = this.state;
+        console.log('render called');
+        if (!isLoaded) {
         return (
-        <React.Fragment>
-        <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
-        <main className="container">
-          <Counters
-              counters={this.state.counters}
-              onDelete={this.handleDelete}
-              onReset={this.handleReset}
-              onIncrement={this.handleIncrement}
-          />
-        </main>
-        </React.Fragment>
-    );
-  }
+            <React.Fragment>
+            <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length}/>
+            <main className="container">
+              <Counters
+                  counters={this.state.counters}
+                  onDelete={this.handleDelete}
+                  onReset={this.handleReset}
+                  onIncrement={this.handleIncrement}
+              />
+            </main>
+            </React.Fragment>);
+        }
+        else {
+            return (
+                <div>
+                <ul>{devices.map(device => (
+                        <li key={device.id}>
+                            Namn: {device.model} | "Antal lagningar: "  {device.reparations.length}
+                        </li>
+                     ))}
+                </ul>
+            </div>)
+        }
+
+        }
 }
 
 export default App;

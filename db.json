@@ -1,6 +1,7 @@
 {
   "tables": [
     {
+      "id": 0,
       "manufacturer": "Apple",
       "model": "iPad Pro",
       "reparations": {
@@ -11,6 +12,7 @@
       }
     },
     {
+      "id": 1,
       "manufacturer": "Apple",
       "model": "iPad Air",
       "reparations": {
@@ -21,6 +23,7 @@
       }
     },
     {
+      "id": 2,
       "manufacturer": "Apple",
       "model": "iPad Air 2",
       "reparations": {
@@ -33,6 +36,7 @@
   ],
   "phones": [
     {
+      "id": 3,
       "manufacturer": "Apple",
       "model": "iPhone 5",
       "reparations": {
@@ -43,6 +47,7 @@
       }
     },
     {
+      "id": 4,
       "manufacturer": "Apple",
       "model": "iPhone 5s",
       "reparations": {
@@ -53,6 +58,7 @@
       }
     },
     {
+      "id": 5,
       "manufacturer": "Apple",
       "model": "iPhone 6",
       "reparations": {
@@ -63,6 +69,7 @@
       }
     },
     {
+      "id": 6,
       "manufacturer": "Apple",
       "model": "iPhone 6s",
       "reparations": {
@@ -73,6 +80,7 @@
       }
     },
     {
+      "id": 7,
       "manufacturer": "Samsung",
       "model": "S6",
       "reparations": {
@@ -83,6 +91,7 @@
       }
     },
     {
+      "id": 8,
       "manufacturer": "Samsung",
       "model": "S7",
       "reparations": {
@@ -93,6 +102,7 @@
       }
     },
     {
+      "id": 9,
       "manufacturer": "Samsung",
       "model": "S7 Edge",
       "reparations": {
@@ -103,6 +113,7 @@
       }
     },
     {
+      "id": 10,
       "manufacturer": "Samsung",
       "model": "S8",
       "reparations": {
