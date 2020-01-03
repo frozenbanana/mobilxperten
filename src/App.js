@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Navbar from "./components/navbar";
 import ButtonViewer from "./components/buttonViewer";
-import Counters from "./components/counters";
+import DeviceViewer from "./components/deviceViewer";
 
 class App extends Component {
 
@@ -68,6 +68,7 @@ class App extends Component {
         this.setState({buttons: buttons[idx].children});
     }
 
+
     handleDelete = (counterId) => {
         const counters = this.state.counters.filter(c => c.id !== counterId);
         this.setState({counters: counters});
@@ -106,13 +107,18 @@ class App extends Component {
                                 <ButtonViewer buttons={this.state.buttons} onClick={this.handleClick}/>
                             </div>
                         </section>
-                        {
-                            devices.phones.map(device => (
-                                <li key={device.id}>
-                                    Namn: {device.model} | "Antal lagningar: " {device.reparations.length}
-                                </li>
-                            ))
-                        }
+                        <section>
+                            <DeviceViewer name={devices.phones.model}
+                                          brand={devices.phones.manufacturer}
+                                          repairs={devices.phones.reparations}/>
+                        </section>
+                        {/*{*/}
+                        {/*    devices.phones.map(device => (*/}
+                        {/*        <li key={device.id}>*/}
+                        {/*            Namn: {device.model} | "Antal lagningar: " {device.reparations.length}*/}
+                        {/*        </li>*/}
+                        {/*    ))*/}
+                        {/*}*/}
                         <section>
                             <h2 className="text-center">Smartphones och Tablets till Salu</h2>
                             <div className="row">
