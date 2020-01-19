@@ -1,68 +1,131 @@
-[
-  {
-    "id": 0,
-    "name": "Apple",
-    "children": [
-      {
-        "id": 3,
-        "name": "iPhone",
-        "children": [
-          {
-            "id": 16,
-            "name": "iPhone 6"
-          },
-          {
-            "id": 17,
-            "name": "iPhone 6s"
-          },
-          {
-            "id": 18,
-            "name": "iPhone 7"
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "iPad"
-      }
-    ]
-  },
-  {
-    "id": 1,
-    "name": "Samsung",
-    "children": [
-      {
-        "id": 5,
-        "name": "Galaxy S5"
-      },
-      {
-        "id": 6,
-        "name": "Galaxy S6"
-      },
-      {
-        "id": 7,
-        "name": "Galaxy S7"
-      },
-      {
-        "id": 8,
-        "name": "Galaxy S7 Edge"
-      },
-      {
-        "id": 9,
-        "name": "Galaxy S8"
-      },
-      {
-        "id": 10,
-        "name": "Galaxy Note 8"
-      },
-      {
-        "id": 11,
-        "name": "Galaxy S9"
-      },
-      {
-        "id": 12,
-        "name": "Galaxy Note 9"
-      }
-    ]
-  }
-]
+{
+  "tables": [
+    {
+      "id": 0,
+      "manufacturer": "Apple",
+      "model": "iPad Pro",
+      "repairs": [
+        { 
+          "name": "screen_replacement",
+          "price": 2495
+        },
+        {"name": "battery_replacement", "price": 1278},
+        {"name": "homebutton_replacement", "price": 1278},
+        {"name": "backside_replacement", "price": 1278}
+      ]
+    },
+    {
+      "id": 1,
+      "manufacturer": "Apple",
+      "model": "iPad Air",
+      "repairs": [
+        {"name": "screen_replacement", "price": 1278},
+        {"name": "battery_replacement", "price": 1278},
+        {"name": "homebutton_replacement", "price": 1278},
+        {"name": "backside_replacement", "price": 1278}
+      ]
+    },
+    {
+      "id": 2,
+      "manufacturer": "Apple",
+      "model": "iPad Air 2",
+      "repairs": [
+        {"name": "screen_replacement", "price": 1478},
+        {"name": "battery_replacement", "price": 1478},
+        {"name": "homebutton_replacement", "price": 1478},
+        {"name": "backside_replacement", "price": 1478}
+      ]
+    }
+  ],
+  "phones": [
+    {
+      "id": 3,
+      "manufacturer": "Apple",
+      "model": "iPhone 5",
+      "repairs": [
+        {"name": "screen_replacement", "price": 1778},
+        {"name": "battery_replacement", "price": 1778},
+        {"name": "homebutton_replacement", "price": 1778},
+        {"name": "backside_replacement", "price": 1778}
+      ]
+    },
+    {
+      "id": 4,
+      "manufacturer": "Apple",
+      "model": "iPhone 5s",
+      "repairs": [
+        {"name": "screen_replacement", "price": 978},
+        {"name": "battery_replacement", "price": 978},
+        {"name": "homebutton_replacement", "price": 978},
+        {"name": "backside_replacement",
+          "price": 978}
+      ]
+    },
+    {
+      "id": 5,
+      "manufacturer": "Apple",
+      "model": "iPhone 6",
+      "repairs": [
+        {"name": "screen_replacement", "price": 2344},
+        {"name": "battery_replacement", "price": 2344},
+        {"name": "homebutton_replacement", "price": 2344},
+        {"name": "backside_replacement", "price": 2344}
+      ]
+    },
+    {
+      "id": 6,
+      "manufacturer": "Apple",
+      "model": "iPhone 6s",
+      "repairs": [
+        {"name": "screen_replacement", "price": 1842},
+        {"name": "battery_replacement", "price": 1842},
+        {"name": "homebutton_replacement", "price": 1842},
+        {"name": "backside_replacement", "price": 1842}
+      ]
+    },
+    {
+      "id": 7,
+      "manufacturer": "Samsung",
+      "model": "S6",
+      "repairs": [
+        {"name": "screen_replacement", "price": 12313},
+        {"name": "battery_replacement", "price": 12313},
+        {"name": "homebutton_replacement", "price": 12313},
+        {"name": "backside_replacement", "price": 12313}
+      ]
+    },
+    {
+      "id": 8,
+      "manufacturer": "Samsung",
+      "model": "S7",
+      "repairs": [
+        {"name": "screen_replacement", "price": 12313},
+        {"name": "battery_replacement", "price": 12313},
+        {"name": "homebutton_replacement", "price": 12313},
+        {"name": "backside_replacement", "price": 12313}
+      ]
+    },
+    {
+      "id": 9,
+      "manufacturer": "Samsung",
+      "model": "S7 Edge",
+      "repairs": [
+        {"name": "screen_replacement", "price": 12313},
+        {"name": "battery_replacement", "price": 12313},
+        {"name": "homebutton_replacement", "price": 12313},
+        {"name": "backside_replacement", "price": 12313}
+      ]      
+    },
+    {
+      "id": 10,
+      "manufacturer": "Samsung",
+      "model": "S8",
+      "repairs": [
+        {"name": "screen_replacement", "price": 12313},
+        {"name": "battery_replacement", "price": 6462},
+        {"name": "homebutton_replacement", "price": 9927},
+        {"name": "backside_replacement", "price": 123312}
+      ]
+    }
+  ]
+}
