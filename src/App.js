@@ -17,9 +17,9 @@ class App extends Component {
             { id: 0, name: 'Apple',
                 children: [
                     { id:3, name: 'iPhone', children: [
-                            {id:16, name: 'iPhone 6', children: [], isLeaf: true},
-                            {id:17, name: 'iPhone 6s', children: [], isLeaf: true},
-                            {id:18, name: 'iPhone 7', children: [], isLeaf: true}
+                            {id:16, name: 'iPhone 6', children: []},
+                            {id:17, name: 'iPhone 6s', children: []},
+                            {id:18, name: 'iPhone 7', children: []}
                         ]
                          },
                     { id:4, name: 'iPad', children: {} },
@@ -52,6 +52,7 @@ class App extends Component {
         fetch('https://my-json-server.typicode.com/frozenbanana/mobilxperten/db')
             .then(res => res.json())
             .then(json => {
+                console.log(json);
                 this.setState({
                     isLoaded: true,
                     devices: json
@@ -67,30 +68,7 @@ class App extends Component {
         const idx = buttons.indexOf(button);
         this.setState({buttons: buttons[idx].children});
     }
-
-
-    handleDelete = (counterId) => {
-        const counters = this.state.counters.filter(c => c.id !== counterId);
-        this.setState({counters: counters});
-    };
-
-    handleReset = () => {
-        const counters = this.state.counters.map(c => {c.value = 0; return c;});
-        this.setState({counters: counters});
-    };
-
-    handleIncrement = (counter) => {
-        console.log("Increment clicked!", counter);
-        // Copy counters references
-        const counters = [...this.state.counters];
-        // Find incremented index
-        const index = counters.indexOf(counter);
-        // Make a incremented counter to replace
-        counters[index] = {...counter};
-        counters[index].value++;
-        this.setState({counters: counters})
-    };
-
+    
     render() {
         const {isLoaded, devices } = this.state;
         if (isLoaded) {
@@ -108,9 +86,9 @@ class App extends Component {
                             </div>
                         </section>
                         <section>
-                            <DeviceViewer name={devices.phones.model}
+                            {/* <DeviceViewer name={devices.phones.model}
                                           brand={devices.phones.manufacturer}
-                                          repairs={devices.phones.reparations}/>
+                                          repairs={devices.phones.reparations}/> */}
                         </section>
                         {/*{*/}
                         {/*    devices.phones.map(device => (*/}
@@ -196,12 +174,6 @@ class App extends Component {
                                 </div>
                             </div>
                         </section>
-                        {/*<Counters*/}
-                        {/*counters={this.state.counters}*/}
-                        {/*onDelete={this.handleDelete}*/}
-                        {/*onReset={this.handleReset}*/}
-                        {/*onIncrement={this.handleIncrement}*/}
-                        {/*/>*/}
                     </main>
                 </React.Fragment>);
         } else {

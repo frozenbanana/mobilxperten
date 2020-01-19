@@ -14,7 +14,7 @@ class ButtonViewer extends Component {
 
     componentWillUnmount() {
         // Here you can clean up timers and such.
-        console.log('Counter unmounted!');
+        console.log('ButtonViewer unmounted!');
     }
 
     render() {
