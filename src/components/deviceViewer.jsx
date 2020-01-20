@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 class DeviceViewer extends Component{
+
+    mapRepairs = (repairs) => {
+        return (<ul>{
+            repairs.map(r => 
+                <li key={r.name}>{r.name}- {r.price} :- </li>)
+            }</ul>);
+    };
+    
     render() {
-        const {name, brand, repairs} = this.props;
+        const {name, repairs} = this.props;
+        const mappedRepairs = this.mapRepairs(repairs);
         return (
             <Container>
-                <h2>{"Laga en" + brand + " - " + name}</h2>
+                <h2>{"Laga en " + name}</h2>
                 <Row>
                     <Col>
                         <img className="card-img-top"
@@ -16,9 +25,7 @@ class DeviceViewer extends Component{
                     </Col>
                     <Col>
                         <h3>Reperationspriser</h3>
-                        <ul>
-                            {repairs.map(r => <li key={r.name}>{r.name}- {r.price}</li>)}
-                        </ul>
+                        {mappedRepairs}
                     </Col>
                 </Row>
             </Container>
