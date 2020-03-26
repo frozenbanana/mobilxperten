@@ -16,30 +16,66 @@
                   "id": 16,
                   "name": "iPhone 6",
                   "repairs": [
-                    { "name": "Display", "price": 999 },
-                    { "name": "Batteri", "price": 1099 },
-                    { "name": "Kamera", "price": 799 },
-                    { "name": "Laddkontakt", "price": 899 }
+                    {
+                      "name": "Display",
+                      "price": 999
+                    },
+                    {
+                      "name": "Batteri",
+                      "price": 1099
+                    },
+                    {
+                      "name": "Kamera",
+                      "price": 799
+                    },
+                    {
+                      "name": "Laddkontakt",
+                      "price": 899
+                    }
                   ]
                 },
                 {
                   "id": 17,
                   "name": "iPhone 6s",
                   "repairs": [
-                    { "name": "Display", "price": 999 },
-                    { "name": "Batteri", "price": 1099 },
-                    { "name": "Kamera", "price": 799 },
-                    { "name": "Laddkontakt", "price": 899 }
+                    {
+                      "name": "Display",
+                      "price": 999
+                    },
+                    {
+                      "name": "Batteri",
+                      "price": 1099
+                    },
+                    {
+                      "name": "Kamera",
+                      "price": 799
+                    },
+                    {
+                      "name": "Laddkontakt",
+                      "price": 899
+                    }
                   ]
                 },
                 {
                   "id": 18,
                   "name": "iPhone 7",
                   "repairs": [
-                    { "name": "Display", "price": 999 },
-                    { "name": "Batteri", "price": 1099 },
-                    { "name": "Kamera", "price": 799 },
-                    { "name": "Laddkontakt", "price": 899 }
+                    {
+                      "name": "Display",
+                      "price": 999
+                    },
+                    {
+                      "name": "Batteri",
+                      "price": 1099
+                    },
+                    {
+                      "name": "Kamera",
+                      "price": 799
+                    },
+                    {
+                      "name": "Laddkontakt",
+                      "price": 899
+                    }
                   ]
                 }
               ]
@@ -48,10 +84,22 @@
               "id": 4,
               "name": "iPad",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             }
           ]
@@ -64,80 +112,176 @@
               "id": 5,
               "name": "Galaxy S5",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 6,
               "name": "Galaxy S6",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 7,
               "name": "Galaxy S7",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 8,
               "name": "Galaxy S7 Edge",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 9,
               "name": "Galaxy S8",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 10,
               "name": "Galaxy Note 8",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 11,
               "name": "Galaxy S9",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             },
             {
               "id": 12,
               "name": "Galaxy Note 9",
               "repairs": [
-                { "name": "Display", "price": 999 },
-                { "name": "Batteri", "price": 1099 },
-                { "name": "Kamera", "price": 799 },
-                { "name": "Laddkontakt", "price": 899 }
+                {
+                  "name": "Display",
+                  "price": 999
+                },
+                {
+                  "name": "Batteri",
+                  "price": 1099
+                },
+                {
+                  "name": "Kamera",
+                  "price": 799
+                },
+                {
+                  "name": "Laddkontakt",
+                  "price": 899
+                }
               ]
             }
           ]

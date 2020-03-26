@@ -6,7 +6,7 @@ import ButtonViewer from "./components/buttonViewer";
 import DeviceViewer from "./components/deviceViewer";
 import DeviceCard from "./components/deviceCard";
 import SellForm from "./components/sellForm";
-import Map from "./components/map";
+// import Map from "./components/map";
 
 import { Button } from "react-bootstrap";
 class App extends Component {
@@ -73,30 +73,30 @@ class App extends Component {
         });
     };
 
-    mapFinalView = () => {
-        const { onFinalSelection, selectedBranch, selectedDevice } = this.state;
-        let view = null;
-        if (onFinalSelection && selectedBranch === "Laga") {
-            view = (
-                <DeviceViewer
-                    name={selectedDevice.name}
-                    repairs={selectedDevice.repairs}
-                />
-            );
-        } else if (onFinalSelection && selectedBranch === "Köp") {
-            view = (
-                <DeviceCard
-                    cardText={selectedDevice.description}
-                    img={selectedDevice.imgUrl}
-                    quality={selectedDevice.quality}
-                    price={selectedDevice.price}
-                />
-            );
-        } else if (onFinalSelection && selectedBranch === "Sälj") {
-            view = <SellForm />;
-        }
-        return view;
-    };
+    // mapFinalView = () => {
+    //     const { onFinalSelection, selectedBranch, selectedDevice } = this.state;
+    //     let view = null;
+    //     if (onFinalSelection && selectedBranch === "Laga") {
+    //         view = (
+    //             <DeviceViewer
+    //                 name={selectedDevice.name}
+    //                 repairs={selectedDevice.repairs}
+    //             />
+    //         );
+    //     } else if (onFinalSelection && selectedBranch === "Köp") {
+    //         view = (
+    //             <DeviceCard
+    //                 cardText={selectedDevice.description}
+    //                 img={selectedDevice.imgUrl}
+    //                 quality={selectedDevice.quality}
+    //                 price={selectedDevice.price}
+    //             />
+    //         );
+    //     } else if (onFinalSelection && selectedBranch === "Sälj") {
+    //         view = <SellForm />;
+    //     }
+    //     return view;
+    // };
 
     render() {
         const {
@@ -156,11 +156,14 @@ class App extends Component {
                                 <p>Lördag : 12.00 - 15.00 </p>
                                 <p>Söndag : Stängt </p>
                             </div>
-                            <div className="col-6">
-                                <Map />
-                            </div>
+                            {/*<div className="col-6">*/}
+                            {/*    <Map />*/}
+                            {/*</div>*/}
                         </div>
                     </section>
+                    <section>
+                        {/*<Map></Map>*/}
+                        </section>
                 </main>
             </React.Fragment>
         );
