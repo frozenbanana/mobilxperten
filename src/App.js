@@ -28,11 +28,9 @@ class App extends Component {
     fetchDevices(url) {
         let { decisionTree } = this.state;
         if (_.isEmpty(decisionTree)) {
-            console.log('decisionTree is empty. Will create new structure', decisionTree);
+            console.log('DecisionTree is empty. Will create new structure', decisionTree);
             decisionTree = this.initTreeStructure();
         }
-        console.log('This is the object to be filled', decisionTree);
-
         fetch(url, { mode: "cors" }).then(res => {
             return res.json();
         }).then(json => {
@@ -44,7 +42,6 @@ class App extends Component {
                 decisionTree: decisionTree,
                 originalDecisionTree: decisionTree,
             });
-            console.log("tada ", this.state.decisionTree);
         }).catch(err => {
             console.log("Fetch to api is not working.", err);
             this.setState({
@@ -68,6 +65,18 @@ class App extends Component {
                     wearable: [],
                 },
                 samsung: {
+                    smartphone: [],
+                    tablet: [],
+                    computer: [],
+                    wearable: []
+                },
+                huawei: {
+                    smartphone: [],
+                    tablet: [],
+                    computer: [],
+                    wearable: []
+                },
+                sony: {
                     smartphone: [],
                     tablet: [],
                     computer: [],
@@ -98,18 +107,19 @@ class App extends Component {
         const { decisionTree } = this.state;
         let decision = button;
 
-        console.log("handleClick checking if decision has repair", decision.repairs);
         if (decision.repairs) {
-            console.log("Got to the end, and this is the device", decisionTree);
             this.setState({
                 onFinalSelection: true,
                 selectedDevice: decision,
+                selectedBranch: 'fix'
             });
             return;
         }
-        console.log('ending handleClick')
+
+        // Check if arrived at array of devices
         if (Array.isArray(decision) && decision[0].repairs) {
-            // Function to map array to Object
+            // Since ButtonViewer always expects to render keys of objects
+            // Array of Objects becomes objects with keys
             const arrayToObject = (array, keyField) =>
                 array.reduce((obj, item) => {
                     obj[item[keyField]] = item;
@@ -121,7 +131,6 @@ class App extends Component {
             decision = devicesObject;
         }
         this.setState({
-            selectedBranch: decision,
             decisionTree: decision
         });
     };
@@ -139,14 +148,15 @@ class App extends Component {
     mapFinalView = () => {
         const { onFinalSelection, selectedBranch, selectedDevice } = this.state;
         let view = null;
-        if (onFinalSelection && selectedBranch === "Laga") {
+        console.log('final view',selectedBranch);
+        if (onFinalSelection && selectedBranch.toLowerCase() === "fix") {
             view = (
                 <DeviceViewer
                     name={selectedDevice.model}
                     repairs={selectedDevice.repairs}
                 />
             );
-        } else if (onFinalSelection && selectedBranch === "Köp") {
+        } else if (onFinalSelection && selectedBranch.toLowerCase() === "buy") {
             view = (
                 <DeviceCard
                     cardText={selectedDevice.description}
@@ -155,7 +165,7 @@ class App extends Component {
                     price={selectedDevice.price}
                 />
             );
-        } else if (onFinalSelection && selectedBranch === "Sälj") {
+        } else if (onFinalSelection && selectedBranch.toLowerCase() === "sell") {
             view = <SellForm />;
         }
         return view;

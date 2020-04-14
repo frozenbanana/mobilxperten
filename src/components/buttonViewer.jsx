@@ -15,10 +15,10 @@ class ButtonViewer extends Component {
 
     mapElements = (buttons, onclick) => {
         console.log('inside map', buttons, Object.keys(buttons));
-        return Object.keys(buttons).map(b =>
+        return Object.keys(buttons).map(key =>
             (
-                <Button key={_.uniqueId()} variant="primary" onClick={() => onclick(buttons[b])}>
-                    {b}
+                <Button key={_.uniqueId()} variant="primary" onClick={() => onclick(buttons[key])}>
+                    {key}
                 </Button>
             ));
     };
