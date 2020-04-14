@@ -6,6 +6,7 @@ import ButtonViewer from "./components/buttonViewer";
 import DeviceViewer from "./components/deviceViewer";
 import DeviceCard from "./components/deviceCard";
 import SellForm from "./components/sellForm";
+import _ from "lodash";
 // import Map from "./components/map";
 
 import { Button } from "react-bootstrap";
@@ -15,8 +16,8 @@ class App extends Component {
         onFinalSelection: false,
         selectedBranch: null,
         selectedDevice: null,
-        devices: [],
-        originalDevices: [],
+        decisionTree: {},
+        originalDecisionTree: [],
     };
 
     constructor() {
@@ -24,84 +25,146 @@ class App extends Component {
         console.log("App constructor called");
     }
 
-    componentDidMount() {
-        console.log("Inside componentDidMount");
-        // Place to do server calls. E.g Get product information.
-        fetch("http://localhost:3000/data")
-            .then(res => res.json())
-            .then(json => {
-                console.log(json);
-                this.setState({
-                    isLoaded: true,
-                    devices: json,
-                    originalDevices: json,
-                });
-                console.log("ComponentDidMount called", this.state);
+    fetchDevices(url) {
+        let { decisionTree } = this.state;
+        if (_.isEmpty(decisionTree)) {
+            console.log('decisionTree is empty. Will create new structure', decisionTree);
+            decisionTree = this.initTreeStructure();
+        }
+        console.log('This is the object to be filled', decisionTree);
+
+        fetch(url, { mode: "cors" }).then(res => {
+            return res.json();
+        }).then(json => {
+            json.forEach(device => {
+                decisionTree.fix[device.brand.toLowerCase()][device.type.toLowerCase()].push(device);
             });
+            this.setState({
+                isLoaded: true,
+                decisionTree: decisionTree,
+                originalDecisionTree: decisionTree,
+            });
+            console.log("tada ", this.state.decisionTree);
+        }).catch(err => {
+            console.log("Fetch to api is not working.", err);
+            this.setState({
+                decisionTree: decisionTree,
+                originalDecisionTree: decisionTree
+            });
+        });
     }
 
-    handleClick = button => {
-        const { devices, selectedBranch } = this.state;
-        const idx = devices.indexOf(button);
+    componentDidMount() {
+        this.fetchDevices('http://localhost:5000/api/devices');
+    }
 
-        const device = devices[idx];
-
-        if (!selectedBranch) {
-            this.setState({
-                selectedBranch: device.name,
-            });
+    initTreeStructure = () => {
+        const tree = {
+            fix: {
+                apple: {
+                    smartphone: [],
+                    tablet: [],
+                    computer: [],
+                    wearable: [],
+                },
+                samsung: {
+                    smartphone: [],
+                    tablet: [],
+                    computer: [],
+                    wearable: []
+                },
+            },
+            buy: {
+                apple: [],
+                samsung: [],
+                huawei: [],
+                sony: [],
+                other: []
+            },
+            sell: {
+                apple: [],
+                samsung: [],
+                huawei: [],
+                sony: [],
+                other: []
+            },
         }
-        const selectedChildren = device.children;
-        if (!selectedChildren) {
-            console.log("Got to the end, and this is the device", device);
+
+        return tree;
+    };
+
+    handleClick = button => {
+        // console.log("handleClick what is button", button);
+        const { decisionTree } = this.state;
+        let decision = button;
+
+        console.log("handleClick checking if decision has repair", decision.repairs);
+        if (decision.repairs) {
+            console.log("Got to the end, and this is the device", decisionTree);
             this.setState({
                 onFinalSelection: true,
-                selectedDevice: device,
+                selectedDevice: decision,
             });
             return;
         }
-        this.setState({ devices: selectedChildren });
+        console.log('ending handleClick')
+        if (Array.isArray(decision) && decision[0].repairs) {
+            // Function to map array to Object
+            const arrayToObject = (array, keyField) =>
+                array.reduce((obj, item) => {
+                    obj[item[keyField]] = item;
+                    return obj;
+                }, {})
+
+            let devicesArray = decision;
+            const devicesObject = arrayToObject(devicesArray, "model");
+            decision = devicesObject;
+        }
+        this.setState({
+            selectedBranch: decision,
+            decisionTree: decision
+        });
     };
 
     handleReset = () => {
-        const { originalDevices } = this.state;
+        const { originalDecisionTree } = this.state;
         this.setState({
             selectedDevice: null,
-            devices: originalDevices,
+            decisionTree: originalDecisionTree,
             onFinalSelection: false,
             selectedBranch: null,
         });
     };
 
-    // mapFinalView = () => {
-    //     const { onFinalSelection, selectedBranch, selectedDevice } = this.state;
-    //     let view = null;
-    //     if (onFinalSelection && selectedBranch === "Laga") {
-    //         view = (
-    //             <DeviceViewer
-    //                 name={selectedDevice.name}
-    //                 repairs={selectedDevice.repairs}
-    //             />
-    //         );
-    //     } else if (onFinalSelection && selectedBranch === "Köp") {
-    //         view = (
-    //             <DeviceCard
-    //                 cardText={selectedDevice.description}
-    //                 img={selectedDevice.imgUrl}
-    //                 quality={selectedDevice.quality}
-    //                 price={selectedDevice.price}
-    //             />
-    //         );
-    //     } else if (onFinalSelection && selectedBranch === "Sälj") {
-    //         view = <SellForm />;
-    //     }
-    //     return view;
-    // };
+    mapFinalView = () => {
+        const { onFinalSelection, selectedBranch, selectedDevice } = this.state;
+        let view = null;
+        if (onFinalSelection && selectedBranch === "Laga") {
+            view = (
+                <DeviceViewer
+                    name={selectedDevice.model}
+                    repairs={selectedDevice.repairs}
+                />
+            );
+        } else if (onFinalSelection && selectedBranch === "Köp") {
+            view = (
+                <DeviceCard
+                    cardText={selectedDevice.description}
+                    img={selectedDevice.imgUrl}
+                    quality={selectedDevice.quality}
+                    price={selectedDevice.price}
+                />
+            );
+        } else if (onFinalSelection && selectedBranch === "Sälj") {
+            view = <SellForm />;
+        }
+        return view;
+    };
 
     render() {
         const {
             isLoaded,
-            devices,
+            decisionTree,
             onFinalSelection,
             selectedDevice,
             selectedBranch,
@@ -110,16 +173,8 @@ class App extends Component {
             return <p>Loading...</p>;
         }
 
-        console.log("The devices: ", devices);
-        console.log(
-            "asd",
-            selectedDevice,
-            selectedBranch,
-            selectedBranch === "Sälj"
-        );
-
         const buttonsView = (
-            <ButtonViewer buttons={devices} onClick={this.handleClick} />
+            <ButtonViewer buttons={decisionTree} onClick={this.handleClick} />
         );
 
         const resetButton = (
@@ -156,14 +211,8 @@ class App extends Component {
                                 <p>Lördag : 12.00 - 15.00 </p>
                                 <p>Söndag : Stängt </p>
                             </div>
-                            {/*<div className="col-6">*/}
-                            {/*    <Map />*/}
-                            {/*</div>*/}
                         </div>
                     </section>
-                    <section>
-                        {/*<Map></Map>*/}
-                        </section>
                 </main>
             </React.Fragment>
         );
