@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Button, ButtonToolbar } from "react-bootstrap";
 import _ from "lodash";
+
+
 class ButtonViewer extends Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         // A good place to get new information if user has specified a certain product interest
-        console.log("prevProps:", prevProps);
-        console.log("prevState:", prevState);
+        // console.log("prevProps:", prevProps);
+        // console.log("prevState:", prevState);
     }
 
     componentWillUnmount() {
@@ -14,31 +16,37 @@ class ButtonViewer extends Component {
     }
 
     mapElements = (buttons, onclick) => {
-        console.log('inside map', buttons, Object.keys(buttons));
+        const buttonStyle = { margin: "5px" };
+
         return Object.keys(buttons).map(key =>
             (
-                <Button key={_.uniqueId()} variant="primary" onClick={() => onclick(buttons[key])}>
+                <Button style={buttonStyle} key={_.uniqueId()} size={this.getButtonSize()} variant={this.getButtonVariant()} onClick={() => onclick(buttons[key], key)}>
                     {key}
                 </Button>
             ));
     };
 
     render() {
-        console.log('Rendering buttons', this.props);
         const { buttons, onClick } = this.props;
         const mappedButtons = this.mapElements(buttons, onClick);
-
+        const styles = { justifyContent: 'center' };
         return (
             <div>
-                <ButtonToolbar>{mappedButtons}</ButtonToolbar>
+                <ButtonToolbar style={styles}>{mappedButtons}</ButtonToolbar>
             </div>
         );
     }
 
-    getBadgeClasses() {
-        let classes = "badge m-2 badge-";
-        classes += this.props.counter.value === 0 ? "warning" : "primary";
-        return classes;
+    getButtonVariant() {
+        const { isInital } = this.props;
+        let variant = isInital ? "success" : "primary";
+        return variant;
+    }
+
+    getButtonSize() {
+        const { isInital } = this.props;
+        let size = isInital ? "lg " : "";
+        return size;
     }
 }
 

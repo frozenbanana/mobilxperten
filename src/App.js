@@ -6,10 +6,17 @@ import ButtonViewer from "./components/buttonViewer";
 import DeviceViewer from "./components/deviceViewer";
 import DeviceCard from "./components/deviceCard";
 import SellForm from "./components/sellForm";
+// import styled from 'styled-components';
 import _ from "lodash";
+
 // import Map from "./components/map";
 
 import { Button } from "react-bootstrap";
+
+// const SButtonViewer = styled.ButtonViewer`
+//     flex-direction: row;
+// `;
+
 class App extends Component {
     state = {
         isLoaded: false,
@@ -17,7 +24,7 @@ class App extends Component {
         selectedBranch: null,
         selectedDevice: null,
         decisionTree: {},
-        originalDecisionTree: [],
+        originalDecisionTree: {},
     };
 
     constructor() {
@@ -53,6 +60,7 @@ class App extends Component {
 
     componentDidMount() {
         this.fetchDevices('http://localhost:5000/api/devices');
+        //this.fetchDevices('http://localhost:5000/api/devices-for-sale');
     }
 
     initTreeStructure = () => {
@@ -102,16 +110,29 @@ class App extends Component {
         return tree;
     };
 
-    handleClick = button => {
-        // console.log("handleClick what is button", button);
-        const { decisionTree } = this.state;
+    handleClick = (button, key) => {
+        const { decisionTree, selectedBranch } = this.state;
         let decision = button;
+        console.log("This is decision", decision, decisionTree);
 
+        console.log('I am inside!',selectedBranch, button, key);
+        if (selectedBranch === null) {
+            console.log('yepp');
+            this.setState({
+                selectedBranch: key
+            });
+        }
+
+        if (decision.length == 0) {
+            console.log("There is no available devices");
+            return;
+        }
+
+        // Check if arrived at final device
         if (decision.repairs) {
             this.setState({
                 onFinalSelection: true,
                 selectedDevice: decision,
-                selectedBranch: 'fix'
             });
             return;
         }
@@ -130,6 +151,8 @@ class App extends Component {
             const devicesObject = arrayToObject(devicesArray, "model");
             decision = devicesObject;
         }
+
+        // Traverse the decision tree
         this.setState({
             decisionTree: decision
         });
@@ -184,11 +207,11 @@ class App extends Component {
         }
 
         const buttonsView = (
-            <ButtonViewer buttons={decisionTree} onClick={this.handleClick} />
+            <ButtonViewer isInital={selectedBranch===null} buttons={decisionTree} onClick={this.handleClick} />
         );
 
         const resetButton = (
-            <Button variant="danger" onClick={this.handleReset}>
+            <Button style={{ margin: "5px",  width: '50%'}} variant="danger" onClick={this.handleReset}>
                 Börja om
             </Button>
         );
@@ -199,7 +222,7 @@ class App extends Component {
                     <section className="jumbotron text-center">
                         <div className="container">
                             <h1 className="jumbotron-heading">
-                                Vad vill du laga?
+                                Hur kan vi hjälpa dig?
                             </h1>
                             <p className="lead text-muted">
                                 Something short and leading about the collection
